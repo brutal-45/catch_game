@@ -4,60 +4,173 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <title>Catch The Insect</title>
+    <title>Catch The Insect - Enhanced</title>
   </head>
   <body>
-    <div class="screen">
-      <h1>Catch The Insect</h1>
+    <div class="screen" id="start-screen">
+      <h1>🦟 Catch The Insect 🕷️</h1>
+      <p class="subtitle">The Impossible Game</p>
       <button class="btn" id="start-btn">Play Game</button>
+      <button class="btn" id="how-to-btn">How to Play</button>
     </div>
 
-    <div class="screen">
-      <h1>What is your "favorite" insect?</h1>
+    <div class="screen" id="difficulty-screen">
+      <h1>Select Difficulty</h1>
+      <div class="difficulty-buttons">
+        <button class="difficulty-btn" data-difficulty="easy">
+          <span class="emoji">🌱</span>
+          <span>EASY</span>
+        </button>
+        <button class="difficulty-btn" data-difficulty="medium">
+          <span class="emoji">🌿</span>
+          <span>MEDIUM</span>
+        </button>
+        <button class="difficulty-btn" data-difficulty="hard">
+          <span class="emoji">🔥</span>
+          <span>HARD</span>
+        </button>
+        <button class="difficulty-btn" data-difficulty="impossible">
+          <span class="emoji">💀</span>
+          <span>IMPOSSIBLE</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="screen" id="insect-select-screen">
+      <h1>Choose Your Target</h1>
       <ul class="insects-list">
         <li>
-          <button class="choose-insect-btn">
-            <p>Fly</p>
-            <img src="http://pngimg.com/uploads/fly/fly_PNG3946.png" alt="fly">
+          <button class="choose-insect-btn" data-insect="fly">
+            <div class="insect-card">
+              <img src="http://pngimg.com/uploads/fly/fly_PNG3946.png" alt="fly">
+              <span>Fly</span>
+            </div>
           </button>
         </li>
         <li>
-          <button class="choose-insect-btn">
-            <p>Mosquito</p>
-            <img
-               src="http://pngimg.com/uploads/mosquito/mosquito_PNG18175.png"
-               alt="mosquito"
-               />
+          <button class="choose-insect-btn" data-insect="mosquito">
+            <div class="insect-card">
+              <img src="http://pngimg.com/uploads/mosquito/mosquito_PNG18175.png" alt="mosquito">
+              <span>Mosquito</span>
+            </div>
           </button>
         </li>
         <li>
-          <button class="choose-insect-btn">
-            <p>Spider</p>
-            <img
-               src="http://pngimg.com/uploads/spider/spider_PNG12.png"
-               alt="spider"
-               />
+          <button class="choose-insect-btn" data-insect="spider">
+            <div class="insect-card">
+              <img src="http://pngimg.com/uploads/spider/spider_PNG12.png" alt="spider">
+              <span>Spider</span>
+            </div>
           </button>
         </li>
         <li>
-          <button class="choose-insect-btn">
-            <p>Roach</p>
-            <img
-               src="http://pngimg.com/uploads/roach/roach_PNG12163.png"
-               alt="roach"
-               />
+          <button class="choose-insect-btn" data-insect="roach">
+            <div class="insect-card">
+              <img src="http://pngimg.com/uploads/roach/roach_PNG12163.png" alt="roach">
+              <span>Roach</span>
+            </div>
+          </button>
+        </li>
+        <li>
+          <button class="choose-insect-btn" data-insect="bee">
+            <div class="insect-card">
+              <img src="https://static.vecteezy.com/system/resources/previews/050/277/020/non_2x/honey-bee-insect-with-transparent-wings-free-png.png" alt="bee">
+              <span>Bee</span>
+            </div>
+          </button>
+        </li>
+        <li>
+          <button class="choose-insect-btn" data-insect="butterfly">
+            <div class="insect-card">
+              <img src="https://static.vecteezy.com/system/resources/previews/075/783/189/non_2x/monarch-butterfly-orange-wing-black-pattern-insect-isolated-transparency-background-nature-wildlife-symmetrical-delicate-beautiful-detailed-macro-spring-summer-pollinator-animal-flying-elegant-png.png" alt="butterfly">
+              <span>Butterfly</span>
+            </div>
           </button>
         </li>
       </ul>
     </div>
 
     <div class="screen game-container" id="game-container">
-      <h3 id="time" class="time">Time: 00:00</h3>
-      <h3 id="score" class="score">Score: 0</h3>
+      <div class="hud">
+        <div class="hud-item">
+          <span class="icon">⏱️</span>
+          <span id="time">00:00</span>
+        </div>
+        <div class="hud-item">
+          <span class="icon">⭐</span>
+          <span id="score">0</span>
+        </div>
+        <div class="hud-item">
+          <span class="icon">🔥</span>
+          <span id="combo">0x</span>
+        </div>
+        <div class="hud-item">
+          <span class="icon">❤️</span>
+          <span id="lives">3</span>
+        </div>
+        <button class="pause-btn" id="pause-btn">⏸️</button>
+      </div>
+      <div class="power-ups" id="power-ups">
+        <div class="power-up-item" id="power-multiscore">
+          <span class="power-up-icon">💎</span>
+          <span class="power-up-text">x2 Score!</span>
+        </div>
+        <div class="power-up-item" id="power-shield">
+          <span class="power-up-icon">🛡️</span>
+          <span class="power-up-text">Shield</span>
+        </div>
+      </div>
       <h5 id="message" class="message">
         Are you annoyed yet? <br>
         You are playing an impossible game!!
       </h5>
+      <div class="pause-overlay" id="pause-overlay">
+        <h2>⏸️ Paused ⏸️</h2>
+        <button class="btn" id="resume-btn">Resume</button>
+        <button class="btn" id="pause-menu-btn">Main Menu</button>
+      </div>
+      
+      <div class="game-over-screen" id="game-over-screen">
+        <h2>🎮 Game Over! 🎮</h2>
+        <div class="stats-container">
+          <div class="stat-box">
+            <span class="stat-icon">⭐</span>
+            <span class="stat-label">Final Score</span>
+            <span class="stat-value" id="final-score">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">🏆</span>
+            <span class="stat-label">High Score</span>
+            <span class="stat-value" id="high-score">0</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">🔥</span>
+            <span class="stat-label">Best Combo</span>
+            <span class="stat-value" id="best-combo">0x</span>
+          </div>
+          <div class="stat-box">
+            <span class="stat-icon">⏱️</span>
+            <span class="stat-label">Time Played</span>
+            <span class="stat-value" id="time-played">00:00</span>
+          </div>
+        </div>
+        <div class="achievements" id="achievements"></div>
+        <button class="btn" id="restart-btn">Play Again</button>
+        <button class="btn" id="menu-btn">Main Menu</button>
+      </div>
+    </div>
+
+    <div class="screen" id="how-to-screen">
+      <h1>How to Play</h1>
+      <div class="instructions">
+        <p>🎯 <strong>Goal:</strong> Catch as many insects as you can!</p>
+        <p>👆 <strong>Controls:</strong> Click on insects to catch them</p>
+        <p>⏰ <strong>Time:</strong> The longer you play, the harder it gets!</p>
+        <p>💎 <strong>Power-ups:</strong> Catch special items for bonuses</p>
+        <p>❤️ <strong>Lives:</strong> You have 3 lives. Missing insects costs lives!</p>
+        <p>🏆 <strong>High Score:</strong> Try to beat your best score!</p>
+      </div>
+      <button class="btn" id="back-btn">Back</button>
     </div>
 
     <script src="script.js"></script>
