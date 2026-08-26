@@ -510,7 +510,7 @@ function getRandomLocation(size = 76) {
   const horizontalPadding = Math.max(36, size / 2 + 12);
   const minX = horizontalPadding;
   const maxX = Math.max(minX + 10, width - horizontalPadding);
-  const minY = Math.min(Math.max(154, height * 0.3), Math.max(154, height - 150));
+  const minY = Math.min(Math.max(205, height * 0.34), Math.max(205, height - 145));
   const maxY = Math.max(minY + 18, height - Math.max(70, size / 2 + 16));
 
   return {
