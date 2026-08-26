@@ -3,176 +3,300 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#11182f" />
+    <meta name="description" content="Catch The Swarm, a fast neon arcade reaction game." />
     <link rel="stylesheet" href="style.css" />
-    <title>Catch The Insect - Enhanced</title>
+    <title>Catch The Swarm | Neon Arcade</title>
   </head>
   <body>
-    <div class="screen" id="start-screen">
-      <h1>🦟 Catch The Insect 🕷️</h1>
-      <p class="subtitle">The Impossible Game</p>
-      <button class="btn" id="start-btn">Play Game</button>
-      <button class="btn" id="how-to-btn">How to Play</button>
-    </div>
+    <div class="app-shell">
+      <div class="ambient ambient-one" aria-hidden="true"></div>
+      <div class="ambient ambient-two" aria-hidden="true"></div>
+      <div class="ambient-grid" aria-hidden="true"></div>
 
-    <div class="screen" id="difficulty-screen">
-      <h1>Select Difficulty</h1>
-      <div class="difficulty-buttons">
-        <button class="difficulty-btn" data-difficulty="easy">
-          <span class="emoji">🌱</span>
-          <span>EASY</span>
-        </button>
-        <button class="difficulty-btn" data-difficulty="medium">
-          <span class="emoji">🌿</span>
-          <span>MEDIUM</span>
-        </button>
-        <button class="difficulty-btn" data-difficulty="hard">
-          <span class="emoji">🔥</span>
-          <span>HARD</span>
-        </button>
-        <button class="difficulty-btn" data-difficulty="impossible">
-          <span class="emoji">💀</span>
-          <span>IMPOSSIBLE</span>
-        </button>
-      </div>
-    </div>
-
-    <div class="screen" id="insect-select-screen">
-      <h1>Choose Your Target</h1>
-      <ul class="insects-list">
-        <li>
-          <button class="choose-insect-btn" data-insect="fly">
-            <div class="insect-card">
-              <img src="http://pngimg.com/uploads/fly/fly_PNG3946.png" alt="fly">
-              <span>Fly</span>
+      <main>
+        <section class="screen start-screen active" id="start-screen" aria-labelledby="game-title">
+          <div class="start-topbar">
+            <div class="brand-lockup">
+              <span class="brand-mark" aria-hidden="true">✦</span>
+              <span>NIGHT SHIFT ARCADE</span>
             </div>
-          </button>
-        </li>
-        <li>
-          <button class="choose-insect-btn" data-insect="mosquito">
-            <div class="insect-card">
-              <img src="http://pngimg.com/uploads/mosquito/mosquito_PNG18175.png" alt="mosquito">
-              <span>Mosquito</span>
+            <div class="record-pill">
+              <span class="record-dot" aria-hidden="true"></span>
+              <span>BEST RUN</span>
+              <strong id="menu-high-score">0</strong>
             </div>
-          </button>
-        </li>
-        <li>
-          <button class="choose-insect-btn" data-insect="spider">
-            <div class="insect-card">
-              <img src="http://pngimg.com/uploads/spider/spider_PNG12.png" alt="spider">
-              <span>Spider</span>
-            </div>
-          </button>
-        </li>
-        <li>
-          <button class="choose-insect-btn" data-insect="roach">
-            <div class="insect-card">
-              <img src="http://pngimg.com/uploads/roach/roach_PNG12163.png" alt="roach">
-              <span>Roach</span>
-            </div>
-          </button>
-        </li>
-        <li>
-          <button class="choose-insect-btn" data-insect="bee">
-            <div class="insect-card">
-              <img src="https://static.vecteezy.com/system/resources/previews/050/277/020/non_2x/honey-bee-insect-with-transparent-wings-free-png.png" alt="bee">
-              <span>Bee</span>
-            </div>
-          </button>
-        </li>
-        <li>
-          <button class="choose-insect-btn" data-insect="butterfly">
-            <div class="insect-card">
-              <img src="https://static.vecteezy.com/system/resources/previews/075/783/189/non_2x/monarch-butterfly-orange-wing-black-pattern-insect-isolated-transparency-background-nature-wildlife-symmetrical-delicate-beautiful-detailed-macro-spring-summer-pollinator-animal-flying-elegant-png.png" alt="butterfly">
-              <span>Butterfly</span>
-            </div>
-          </button>
-        </li>
-      </ul>
-    </div>
-
-    <div class="screen game-container" id="game-container">
-      <div class="hud">
-        <div class="hud-item">
-          <span class="icon">⏱️</span>
-          <span id="time">00:00</span>
-        </div>
-        <div class="hud-item">
-          <span class="icon">⭐</span>
-          <span id="score">0</span>
-        </div>
-        <div class="hud-item">
-          <span class="icon">🔥</span>
-          <span id="combo">0x</span>
-        </div>
-        <div class="hud-item">
-          <span class="icon">❤️</span>
-          <span id="lives">3</span>
-        </div>
-        <button class="pause-btn" id="pause-btn">⏸️</button>
-      </div>
-      <div class="power-ups" id="power-ups">
-        <div class="power-up-item" id="power-multiscore">
-          <span class="power-up-icon">💎</span>
-          <span class="power-up-text">x2 Score!</span>
-        </div>
-        <div class="power-up-item" id="power-shield">
-          <span class="power-up-icon">🛡️</span>
-          <span class="power-up-text">Shield</span>
-        </div>
-      </div>
-      <h5 id="message" class="message">
-        Are you annoyed yet? <br>
-        You are playing an impossible game!!
-      </h5>
-      <div class="pause-overlay" id="pause-overlay">
-        <h2>⏸️ Paused ⏸️</h2>
-        <button class="btn" id="resume-btn">Resume</button>
-        <button class="btn" id="pause-menu-btn">Main Menu</button>
-      </div>
-      
-      <div class="game-over-screen" id="game-over-screen">
-        <h2>🎮 Game Over! 🎮</h2>
-        <div class="stats-container">
-          <div class="stat-box">
-            <span class="stat-icon">⭐</span>
-            <span class="stat-label">Final Score</span>
-            <span class="stat-value" id="final-score">0</span>
           </div>
-          <div class="stat-box">
-            <span class="stat-icon">🏆</span>
-            <span class="stat-label">High Score</span>
-            <span class="stat-value" id="high-score">0</span>
+
+          <div class="start-content">
+            <div class="hero-copy">
+              <p class="eyebrow">REACTION TRAINING <span>/</span> LEVEL 01</p>
+              <h1 id="game-title"><span>CATCH</span><span>THE SWARM</span></h1>
+              <p class="hero-description">
+                Tiny targets. Big streaks. Catch your target before it escapes and own the night.
+              </p>
+              <div class="hero-actions">
+                <button class="btn btn-primary btn-large" id="start-btn">
+                  <span>Start a hunt</span><span class="button-arrow" aria-hidden="true">→</span>
+                </button>
+                <button class="btn btn-quiet" id="how-to-btn">How to play <span aria-hidden="true">↗</span></button>
+              </div>
+            </div>
+
+            <div class="hero-art" aria-hidden="true">
+              <div class="orbit orbit-one"></div>
+              <div class="orbit orbit-two"></div>
+              <div class="target-orb"><span>🦋</span></div>
+              <span class="art-spark spark-one">✦</span>
+              <span class="art-spark spark-two">+</span>
+              <span class="art-spark spark-three">✦</span>
+              <span class="art-label label-one">FAST</span>
+              <span class="art-label label-two">FOCUS</span>
+            </div>
           </div>
-          <div class="stat-box">
-            <span class="stat-icon">🔥</span>
-            <span class="stat-label">Best Combo</span>
-            <span class="stat-value" id="best-combo">0x</span>
+
+          <div class="start-footer">
+            <div class="quick-stat">
+              <span class="quick-stat-icon" aria-hidden="true">⚡</span>
+              <span><strong>4</strong><small>difficulty modes</small></span>
+            </div>
+            <div class="quick-stat">
+              <span class="quick-stat-icon" aria-hidden="true">◎</span>
+              <span><strong>6</strong><small>targets to master</small></span>
+            </div>
+            <div class="quick-stat">
+              <span class="quick-stat-icon" aria-hidden="true">⌁</span>
+              <span><strong>∞</strong><small>streak potential</small></span>
+            </div>
+            <p class="version-note">NO DOWNLOAD <span>•</span> JUST REACTION</p>
           </div>
-          <div class="stat-box">
-            <span class="stat-icon">⏱️</span>
-            <span class="stat-label">Time Played</span>
-            <span class="stat-value" id="time-played">00:00</span>
+        </section>
+
+        <section class="screen selection-screen" id="difficulty-screen" aria-labelledby="difficulty-title">
+          <div class="selection-panel">
+            <div class="screen-header">
+              <button class="icon-btn back-btn" id="difficulty-back-btn" aria-label="Back to main menu">←</button>
+              <div>
+                <p class="eyebrow">STEP 01 <span>/</span> SET THE PACE</p>
+                <h2 id="difficulty-title">Choose your intensity</h2>
+              </div>
+              <span class="step-counter">01 <i>/</i> 02</span>
+            </div>
+
+            <div class="difficulty-grid">
+              <button class="difficulty-btn difficulty-easy" data-difficulty="easy">
+                <span class="choice-icon" aria-hidden="true">🌱</span>
+                <span class="choice-copy"><strong>Warm up</strong><small>Easy pace, generous escapes</small></span>
+                <span class="choice-meta"><b>CALM</b><small>1×</small></span>
+              </button>
+              <button class="difficulty-btn difficulty-medium" data-difficulty="medium">
+                <span class="choice-icon" aria-hidden="true">🌿</span>
+                <span class="choice-copy"><strong>Lock in</strong><small>Balanced speed and pressure</small></span>
+                <span class="choice-meta"><b>READY</b><small>2×</small></span>
+              </button>
+              <button class="difficulty-btn difficulty-hard" data-difficulty="hard">
+                <span class="choice-icon" aria-hidden="true">🔥</span>
+                <span class="choice-copy"><strong>Overdrive</strong><small>Fast targets, short windows</small></span>
+                <span class="choice-meta"><b>HOT</b><small>3×</small></span>
+              </button>
+              <button class="difficulty-btn difficulty-impossible" data-difficulty="impossible">
+                <span class="choice-icon" aria-hidden="true">☠</span>
+                <span class="choice-copy"><strong>Unfair</strong><small>For reaction monsters only</small></span>
+                <span class="choice-meta"><b>CHAOS</b><small>4×</small></span>
+              </button>
+            </div>
+
+            <div class="selection-tip">
+              <span class="tip-icon" aria-hidden="true">✦</span>
+              <p><strong>Every 15 seconds raises the wave.</strong> Keep your streak alive for bigger multipliers.</p>
+            </div>
           </div>
-        </div>
-        <div class="achievements" id="achievements"></div>
-        <button class="btn" id="restart-btn">Play Again</button>
-        <button class="btn" id="menu-btn">Main Menu</button>
-      </div>
+        </section>
+
+        <section class="screen selection-screen" id="insect-select-screen" aria-labelledby="target-title">
+          <div class="selection-panel target-panel">
+            <div class="screen-header">
+              <button class="icon-btn back-btn" id="target-back-btn" aria-label="Back to difficulty selection">←</button>
+              <div>
+                <p class="eyebrow">STEP 02 <span>/</span> PICK YOUR TARGET</p>
+                <h2 id="target-title">Who are you hunting?</h2>
+              </div>
+              <span class="step-counter">02 <i>/</i> 02</span>
+            </div>
+            <p class="selection-intro">Your target changes the score and the feel of the run. Pick a favorite, then stay sharp.</p>
+
+            <div class="target-grid">
+              <button class="target-option choose-insect-btn" data-insect="fly">
+                <span class="target-preview target-fly"><span>🪰</span></span>
+                <span class="target-option-copy"><strong>Fly</strong><small>Quick &amp; nimble</small></span>
+                <span class="target-points">10 <small>PTS</small></span>
+              </button>
+              <button class="target-option choose-insect-btn" data-insect="mosquito">
+                <span class="target-preview target-mosquito"><span>🦟</span></span>
+                <span class="target-option-copy"><strong>Mosquito</strong><small>Small &amp; speedy</small></span>
+                <span class="target-points">12 <small>PTS</small></span>
+              </button>
+              <button class="target-option choose-insect-btn" data-insect="spider">
+                <span class="target-preview target-spider"><span>🕷️</span></span>
+                <span class="target-option-copy"><strong>Spider</strong><small>Slow &amp; sneaky</small></span>
+                <span class="target-points">14 <small>PTS</small></span>
+              </button>
+              <button class="target-option choose-insect-btn" data-insect="roach">
+                <span class="target-preview target-roach"><span>🪳</span></span>
+                <span class="target-option-copy"><strong>Roach</strong><small>Erratic runner</small></span>
+                <span class="target-points">16 <small>PTS</small></span>
+              </button>
+              <button class="target-option choose-insect-btn" data-insect="bee">
+                <span class="target-preview target-bee"><span>🐝</span></span>
+                <span class="target-option-copy"><strong>Bee</strong><small>Bonus hunter</small></span>
+                <span class="target-points">20 <small>PTS</small></span>
+              </button>
+              <button class="target-option choose-insect-btn" data-insect="butterfly">
+                <span class="target-preview target-butterfly"><span>🦋</span></span>
+                <span class="target-option-copy"><strong>Butterfly</strong><small>Rare &amp; rewarding</small></span>
+                <span class="target-points">24 <small>PTS</small></span>
+              </button>
+            </div>
+            <p class="selection-footnote"><span aria-hidden="true">↳</span> You can change your target after every run.</p>
+          </div>
+        </section>
+
+        <section class="screen instructions-screen" id="how-to-screen" aria-labelledby="how-to-title">
+          <div class="instructions-panel">
+            <div class="screen-header">
+              <button class="icon-btn back-btn" id="back-btn" aria-label="Back to main menu">←</button>
+              <div>
+                <p class="eyebrow">FIELD GUIDE <span>/</span> QUICK BRIEF</p>
+                <h2 id="how-to-title">How to play</h2>
+              </div>
+              <span class="guide-badge">60 SEC BRIEF</span>
+            </div>
+            <div class="guide-grid">
+              <article class="guide-card guide-card-highlight">
+                <span class="guide-number">01</span>
+                <span class="guide-icon" aria-hidden="true">⌖</span>
+                <h3>Spot the target</h3>
+                <p>Only your chosen target counts. Tap or click it before the ring closes.</p>
+              </article>
+              <article class="guide-card">
+                <span class="guide-number">02</span>
+                <span class="guide-icon" aria-hidden="true">↗</span>
+                <h3>Build the streak</h3>
+                <p>Catch targets quickly. Every three catches increases your score multiplier.</p>
+              </article>
+              <article class="guide-card">
+                <span class="guide-number">03</span>
+                <span class="guide-icon" aria-hidden="true">♥</span>
+                <h3>Protect your run</h3>
+                <p>You have three lives. Missed targets cost one, but a shield can absorb a miss.</p>
+              </article>
+              <article class="guide-card">
+                <span class="guide-number">04</span>
+                <span class="guide-icon" aria-hidden="true">◆</span>
+                <h3>Grab power-ups</h3>
+                <p>Catch the diamond for double points or the shield for a safety net.</p>
+              </article>
+            </div>
+            <div class="controls-strip">
+              <span><b>POINTER</b> click / tap targets</span>
+              <span><b>SPACE</b> pause or resume</span>
+              <span><b>ESC</b> pause in a run</span>
+            </div>
+            <button class="btn btn-primary" id="guide-start-btn">I’m ready <span class="button-arrow" aria-hidden="true">→</span></button>
+          </div>
+        </section>
+
+        <section class="screen game-container" id="game-container" aria-label="Catch The Swarm game">
+          <div class="arena-grid" aria-hidden="true"></div>
+          <div class="arena-vignette" aria-hidden="true"></div>
+
+          <header class="hud">
+            <div class="hud-brand">
+              <span class="brand-mark" aria-hidden="true">✦</span>
+              <span class="hud-brand-name">SWARM<span>/</span>RUN</span>
+              <span class="live-badge"><i></i> LIVE</span>
+            </div>
+            <div class="hud-stats">
+              <div class="hud-stat hud-score"><span>SCORE</span><strong id="score">0</strong></div>
+              <div class="hud-stat"><span>TIME</span><strong id="time">00:00</strong></div>
+              <div class="hud-stat hud-streak"><span>STREAK</span><strong id="combo">0</strong><em id="multiplier">×1</em></div>
+              <div class="hud-stat hud-lives"><span>LIVES</span><strong id="lives">3</strong><span class="lives-icons" id="lives-icons" aria-hidden="true">♥ ♥ ♥</span></div>
+            </div>
+            <div class="hud-actions">
+              <button class="icon-btn hud-icon-btn" id="sound-btn" aria-label="Mute sound" aria-pressed="true">♪</button>
+              <button class="icon-btn hud-icon-btn pause-btn" id="pause-btn" aria-label="Pause game" aria-pressed="false">Ⅱ</button>
+            </div>
+          </header>
+
+          <div class="game-topline">
+            <div class="hunt-pill"><span class="hunt-dot" aria-hidden="true"></span> HUNTING <strong id="current-target">BUTTERFLY</strong></div>
+            <div class="wave-pill">WAVE <strong id="wave">01</strong><span id="wave-label">CALIBRATION</span></div>
+          </div>
+
+          <div class="arena-message" id="arena-message" role="status" aria-live="polite">
+            <span class="message-marker" aria-hidden="true">✦</span>
+            <span id="message-text">Ready when you are. Catch your target.</span>
+          </div>
+
+          <div class="power-ups" id="power-ups" aria-live="polite">
+            <div class="power-status" id="power-multiscore" hidden>
+              <span class="power-icon" aria-hidden="true">◆</span><span><b>DOUBLE SCORE</b><small id="multiscore-time">10s</small></span>
+            </div>
+            <div class="power-status shield-status" id="power-shield" hidden>
+              <span class="power-icon" aria-hidden="true">⬡</span><span><b>SHIELD READY</b><small id="shield-time">15s</small></span>
+            </div>
+          </div>
+
+          <div class="combo-meter" aria-label="Streak progress">
+            <div class="combo-meter-top"><span>STREAK CHARGE</span><strong id="combo-hint">Catch 3 in a row for ×2</strong></div>
+            <div class="meter-track"><span id="combo-progress"></span></div>
+          </div>
+
+          <div class="arena-footer"><span class="footer-crosshair" aria-hidden="true">⊹</span><span id="arena-tip">Targets expire quickly — keep moving.</span></div>
+
+          <div class="pause-overlay" id="pause-overlay" aria-hidden="true">
+            <div class="pause-card">
+              <span class="pause-icon" aria-hidden="true">Ⅱ</span>
+              <p class="eyebrow">RUN ON HOLD</p>
+              <h2>Take a breath.</h2>
+              <p>Your streak is safe. Resume when you’re ready.</p>
+              <button class="btn btn-primary" id="resume-btn">Resume hunt <span class="button-arrow" aria-hidden="true">→</span></button>
+              <button class="btn btn-quiet" id="pause-menu-btn">Leave run</button>
+            </div>
+          </div>
+
+          <div class="game-over-screen" id="game-over-screen" role="dialog" aria-modal="true" aria-labelledby="game-over-title" aria-hidden="true">
+            <div class="game-over-card">
+              <div class="result-heading"><span class="eyebrow" id="result-kicker">RUN COMPLETE</span><span class="result-mark" aria-hidden="true">✦</span></div>
+              <h2 id="game-over-title">The swarm got away.</h2>
+              <p class="result-reason" id="result-reason">Your next run starts now.</p>
+              <div class="score-spotlight">
+                <span>FINAL SCORE</span>
+                <strong id="final-score">0</strong>
+                <span class="new-record" id="new-record" hidden>NEW RECORD</span>
+              </div>
+              <div class="stats-container">
+                <div class="stat-box"><span class="stat-label">HIGH SCORE</span><strong id="high-score">0</strong></div>
+                <div class="stat-box"><span class="stat-label">BEST STREAK</span><strong id="best-combo">0×</strong></div>
+                <div class="stat-box"><span class="stat-label">TARGETS CAUGHT</span><strong id="caught-count">0</strong></div>
+                <div class="stat-box"><span class="stat-label">ACCURACY</span><strong id="accuracy">0%</strong></div>
+                <div class="stat-box stat-box-wide"><span class="stat-label">TIME IN THE ZONE</span><strong id="time-played">00:00</strong></div>
+              </div>
+              <div class="results-divider"><span>RUN UNLOCKS</span><span id="achievement-summary">0 unlocked</span></div>
+              <div class="achievements" id="achievements"></div>
+              <div class="game-over-actions">
+                <button class="btn btn-primary" id="restart-btn">Run it back <span class="button-arrow" aria-hidden="true">↗</span></button>
+                <button class="btn btn-quiet" id="menu-btn">Main menu</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
     </div>
 
-    <div class="screen" id="how-to-screen">
-      <h1>How to Play</h1>
-      <div class="instructions">
-        <p>🎯 <strong>Goal:</strong> Catch as many insects as you can!</p>
-        <p>👆 <strong>Controls:</strong> Click on insects to catch them</p>
-        <p>⏰ <strong>Time:</strong> The longer you play, the harder it gets!</p>
-        <p>💎 <strong>Power-ups:</strong> Catch special items for bonuses</p>
-        <p>❤️ <strong>Lives:</strong> You have 3 lives. Missing insects costs lives!</p>
-        <p>🏆 <strong>High Score:</strong> Try to beat your best score!</p>
-      </div>
-      <button class="btn" id="back-btn">Back</button>
-    </div>
-
+    <noscript>
+      <div class="noscript-message">This game needs JavaScript enabled to run.</div>
+    </noscript>
     <script src="script.js"></script>
   </body>
 </html>

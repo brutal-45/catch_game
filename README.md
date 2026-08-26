@@ -1,146 +1,55 @@
-# 🦟 Catch The Insect 🕷️
+# ✦ Catch The Swarm
 
-An exciting and challenging arcade game where you catch insects before they escape!
+A polished, dependency-free reaction arcade game. Pick a target, survive as long as possible, and build a streak before the swarm gets away.
 
-## 🎮 Game Overview
+## Play
 
-Catch The Insect is a fast-paced arcade game where players must catch various insects before they disappear. The game gets progressively harder as time goes on, with more insects appearing and less time to catch them.
+Open `index.html` in a modern browser, or serve the folder locally:
 
-## 🎯 Objective
+```bash
+python3 -m http.server 4173
+```
 
-- Catch as many insects as possible to score points
-- Complete achievements to unlock rewards
-- Beat your high score
-- Survive as long as you can!
+Then visit <http://localhost:4173>.
 
-## 🕹️ How to Play
+## How it works
 
-### Starting the Game
-1. Click **"Play Game"** on the main menu
-2. Select your difficulty level (Easy, Medium, Hard, or Impossible)
-3. Choose which insect you want to catch
-4. Start catching insects!
+1. Choose an intensity: **Warm up**, **Lock in**, **Overdrive**, or **Unfair**.
+2. Choose one of six targets. Each target has a different base score and personality.
+3. Click or tap targets before their ring closes.
+4. Catch targets in a row to charge the streak multiplier. Every 15 seconds brings a faster wave.
+5. Grab power-ups when they appear:
+   - **Double score** doubles points for 10 seconds.
+   - **Shield** absorbs one missed target for 15 seconds.
+6. You have three lives. When they are gone, the run ends.
 
 ### Controls
-- **Mouse/Touch**: Click or tap on insects to catch them
-- **Pause Button (⏸️)**: Pause/resume the game
 
-### Gameplay Mechanics
+- Pointer, mouse, or touch: catch targets and power-ups
+- `Space`: pause or resume
+- `Escape`: pause during a run
+- Pause and sound controls are also available in the game HUD
 
-#### Scoring System
-- **Base Points**: 1 point per insect caught
-- **Combo Bonus**: Catch insects quickly for multipliers (up to 10x)
-- **Special Insects**:
-  - 🐝 **Bee**: +3 bonus points
-  - 🦋 **Butterfly**: +5 bonus points
+## Highlights
 
-#### Lives System
-- You start with **3 lives** ❤️❤️❤️
-- Losing an insect (it escapes) costs 1 life
-- Game ends when you run out of lives
+- Responsive neon arcade interface for desktop and mobile
+- Six target choices using local emoji assets, so the game works offline
+- Four escalating difficulty modes and pressure waves
+- Streak multipliers, milestone bonuses, power-ups, particles, floating score feedback, and confetti
+- Pause that freezes timers and target animation correctly
+- Accurate run recap with score, high score, streak, catches, accuracy, and time played
+- 13 run achievements with local unlock persistence
+- Local high-score and sound-preference persistence
+- Defensive Web Audio handling: sound is generated when supported and never blocks gameplay
+- Reduced-motion support and keyboard-friendly controls
+- No external dependencies or build step
 
-#### Difficulty Levels
-- **🌱 Easy**: Slow insects, more time to catch, fewer insects spawn
-- **🌿 Medium**: Balanced gameplay (default)
-- **🔥 Hard**: Faster insects, less time, more insects
-- **💀 Impossible**: Extremely fast, very little time, many insects
+## Project files
 
-#### Power-Ups
-- **💎 x2 Score**: Double your points for 10 seconds
-- **🛡️ Shield**: Protects you from losing a life once (15 seconds)
+- `index.html` — screens, HUD, overlays, and accessible game controls
+- `style.css` — responsive neon arcade presentation and animations
+- `script.js` — game loop, scoring, power-ups, achievements, audio, and persistence
 
-#### Combo System
-- Catch insects quickly to build a combo
-- Combo resets after 3 seconds of inactivity
-- Every 5 insects caught = +1 point bonus
-- Maximum combo display shows your current multiplier
+## Browser support
 
-## 🏆 Achievements
-
-Unlock 13 different achievements:
-
-| Achievement | Icon | Description |
-|------------|------|-------------|
-| First Blood | 🎯 | Catch your first insect |
-| Catcher | 🦟 | Catch 10 insects |
-| Expert | 👨‍🏫 | Catch 50 insects |
-| Master | 👑 | Catch 100 insects |
-| Combo Starter | 🔥 | Reach a 5x combo |
-| Combo Master | 💫 | Reach a 10x combo |
-| Century | ⭐ | Score 100 points |
-| Half Century | 🌟 | Score 500 points |
-| Legend | 🏆 | Score 1000 points |
-| Butterfly Hunter | 🦋 | Catch 5 butterflies |
-| Bee King | 🐝 | Catch 5 bees |
-| Survivor | 🛡️ | Play for 2 minutes |
-| Speed Demon | ⚡ | Catch 20 insects in 1 minute |
-
-## 🎨 Available Insects
-
-Choose from 6 different insects to catch:
-
-1. **Fly** 🪰 - Fast and erratic movement
-2. **Mosquito** 🦟 - Quick and annoying
-3. **Spider** 🕷️ - Slow but tricky
-4. **Roach** 🪳 - Fast and unpredictable
-5. **Bee** 🐝 - Bonus points, hover animation
-6. **Butterfly** 🦋 - Bonus points, flutter animation
-
-## 📊 Game Statistics
-
-After each game, you'll see:
-- **Final Score**: Your total points
-- **High Score**: Your best score ever (saved locally)
-- **Best Combo**: Your highest combo multiplier
-- **Time Played**: How long you survived
-
-## 🎵 Features
-
-- **Sound Effects**: Catch, miss, power-up, and game over sounds
-- **Visual Effects**: 
-  - Particle explosions when catching insects
-  - Floating score pop-ups
-  - Confetti celebration on game over
-  - Smooth animations for all insects
-- **Responsive Design**: Works on desktop and mobile devices
-- **High Score Saving**: Your best score is saved in browser storage
-
-## 🎮 Game Screens
-
-1. **Main Menu**: Start the game or view instructions
-2. **Difficulty Selection**: Choose your challenge level
-3. **Insect Selection**: Pick which insect to catch
-4. **Game Screen**: Catch insects, track score and time
-5. **Game Over**: View your stats and achievements
-
-## 💡 Tips for Success
-
-1. **Build Combos**: Catch insects quickly to maximize points
-2. **Prioritize Special Insects**: Butterflies and bees give bonus points
-3. **Collect Power-ups**: Don't miss the 💎 and 🛡️ items
-4. **Stay Calm**: The game gets harder over time - focus!
-5. **Practice**: Each difficulty level has its own rhythm
-
-## 🛠️ Technical Details
-
-- **Built with**: HTML5, CSS3, JavaScript (ES6+)
-- **No external dependencies**: Runs in any modern browser
-- **LocalStorage**: Saves high scores and achievements
-- **Web Audio API**: Generates sound effects dynamically
-
-## 📱 Browser Compatibility
-
-Works on all modern browsers:
-- ✅ Chrome
-- ✅ Firefox
-- ✅ Safari
-- ✅ Edge
-- ✅ Mobile browsers
-
-## 🎉 Have Fun!
-
-Remember, the goal is to have fun! Try to beat your high score and unlock all achievements. Good luck, insect catcher! 🦟
-
----
-
-**Created with ❤️ for insect enthusiasts everywhere!**
+Works in current Chrome, Firefox, Safari, and Edge releases. JavaScript and a browser with Pointer Events are recommended; mouse clicks and keyboard activation are supported as fallbacks.
